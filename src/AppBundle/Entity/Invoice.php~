@@ -1,0 +1,60 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Invoice
+ *
+ * @ORM\Table(name="Invoice", indexes={@ORM\Index(name="fk_Invoice_2_idx", columns={"salesRep_id"}), @ORM\Index(name="fk_Invoice_1_idx", columns={"customer_id"})})
+ * @ORM\Entity
+ */
+class Invoice
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=true)
+     */
+    private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="totalAmount", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $totalamount;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\Salesrep
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Salesrep")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="salesRep_id", referencedColumnName="id")
+     * })
+     */
+    private $salesrep;
+
+    /**
+     * @var \AppBundle\Entity\Customer
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Customer")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
+     * })
+     */
+    private $customer;
+
+
+}
+

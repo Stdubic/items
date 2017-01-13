@@ -1,0 +1,60 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Oninvoice
+ *
+ * @ORM\Table(name="onInvoice", indexes={@ORM\Index(name="fk_onInvoice_1_idx", columns={"product_id"}), @ORM\Index(name="fk_onInvoice_2_idx", columns={"invoice_id"})})
+ * @ORM\Entity
+ */
+class Oninvoice
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="price", type="string", length=45, nullable=false)
+     */
+    private $price;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="quantity", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $quantity;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\Invoice
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Invoice")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="invoice_id", referencedColumnName="id")
+     * })
+     */
+    private $invoice;
+
+    /**
+     * @var \AppBundle\Entity\Product
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Product")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     * })
+     */
+    private $product;
+
+
+}
+

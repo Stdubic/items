@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Oninvoice" table="onInvoice">
+    <indexes>
+      <index name="fk_onInvoice_1_idx" columns="product_id"/>
+      <index name="fk_onInvoice_2_idx" columns="invoice_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="price" type="string" column="price" length="45" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="quantity" type="decimal" column="quantity" precision="10" scale="2" nullable="false"/>
+    <many-to-one field="invoice" target-entity="Invoice" fetch="LAZY">
+      <join-columns>
+        <join-column name="invoice_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="product" target-entity="Product" fetch="LAZY">
+      <join-columns>
+        <join-column name="product_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
