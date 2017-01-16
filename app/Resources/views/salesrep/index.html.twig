@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Salesreps list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for salesrep in salesreps %}
+            <tr>
+                <td><a href="{{ path('salesrep_show', { 'id': salesrep.id }) }}">{{ salesrep.name }}</a></td>
+                <td>{{ salesrep.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('salesrep_show', { 'id': salesrep.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('salesrep_edit', { 'id': salesrep.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('salesrep_new') }}">Create a new salesrep</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Invoices list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Totalamount</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for invoice in invoices %}
+            <tr>
+                <td><a href="{{ path('invoice_show', { 'id': invoice.id }) }}">{{ invoice.date }}</a></td>
+                <td>{{ invoice.totalamount }}</td>
+                <td>{{ invoice.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('invoice_show', { 'id': invoice.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('invoice_edit', { 'id': invoice.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('invoice_new') }}">Create a new invoice</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Oninvoices list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for oninvoice in oninvoices %}
+            <tr>
+                <td><a href="{{ path('oninvoice_show', { 'id': oninvoice.id }) }}">{{ oninvoice.price }}</a></td>
+                <td>{{ oninvoice.quantity }}</td>
+                <td>{{ oninvoice.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('oninvoice_show', { 'id': oninvoice.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('oninvoice_edit', { 'id': oninvoice.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('oninvoice_new') }}">Create a new oninvoice</a>
+        </li>
+    </ul>
+{% endblock %}
