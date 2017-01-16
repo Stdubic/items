@@ -19,5 +19,8 @@
         <option name="unsigned"/>
       </options>
     </field>
+      <many-to-one field="vendor" target-entity="Vendor" inversed-by="products">
+          <join-column name="vendor_id" referenced-column-name="id" />
+      </many-to-one>
   </entity>
 </doctrine-mapping>

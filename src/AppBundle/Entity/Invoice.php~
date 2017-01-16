@@ -56,5 +56,110 @@ class Invoice
     private $customer;
 
 
-}
 
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Invoice
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set totalamount
+     *
+     * @param string $totalamount
+     *
+     * @return Invoice
+     */
+    public function setTotalamount($totalamount)
+    {
+        $this->totalamount = $totalamount;
+
+        return $this;
+    }
+
+    /**
+     * Get totalamount
+     *
+     * @return string
+     */
+    public function getTotalamount()
+    {
+        return $this->totalamount;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set salesrep
+     *
+     * @param \AppBundle\Entity\Salesrep $salesrep
+     *
+     * @return Invoice
+     */
+    public function setSalesrep(\AppBundle\Entity\Salesrep $salesrep = null)
+    {
+        $this->salesrep = $salesrep;
+
+        return $this;
+    }
+
+    /**
+     * Get salesrep
+     *
+     * @return \AppBundle\Entity\Salesrep
+     */
+    public function getSalesrep()
+    {
+        return $this->salesrep;
+    }
+
+    /**
+     * Set customer
+     *
+     * @param \AppBundle\Entity\Customer $customer
+     *
+     * @return Invoice
+     */
+    public function setCustomer(\AppBundle\Entity\Customer $customer = null)
+    {
+        $this->customer = $customer;
+
+        return $this;
+    }
+
+    /**
+     * Get customer
+     *
+     * @return \AppBundle\Entity\Customer
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+}

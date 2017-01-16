@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Product
 {
+
     /**
      * @var string
      *
@@ -41,6 +42,12 @@ class Product
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+    /**
+     * Many Features have One Product.
+     * @ManyToOne(targetEntity="Vendor", inversedBy="products")
+     * @JoinColumn(name="vendor_id", referencedColumnName="id")
+     */
+    private $vendor;
 
 
 
@@ -124,5 +131,30 @@ class Product
     public function getId()
     {
         return $this->id;
+    }
+
+
+    /**
+     * Set vendor
+     *
+     * @param \AppBundle\Entity\Vendor $vendor
+     *
+     * @return Product
+     */
+    public function setVendor(\AppBundle\Entity\Vendor $vendor = null)
+    {
+        $this->vendor = $vendor;
+
+        return $this;
+    }
+
+    /**
+     * Get vendor
+     *
+     * @return \AppBundle\Entity\Vendor
+     */
+    public function getVendor()
+    {
+        return $this->vendor;
     }
 }
