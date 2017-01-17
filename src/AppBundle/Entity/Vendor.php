@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
 /**
  * Vendor
  */
@@ -23,7 +24,7 @@ class Vendor
     private $state;
     /**
      * One Vendor has Many Products.
-     * @OneToMany(targetEntity="Products", mappedBy="vendor")
+     * @ORM\OneToMany(targetEntity="Products", mappedBy="vendor")
      */
     private $product;
 
@@ -129,5 +130,8 @@ class Vendor
      */
     private $products;
 
+    public function __toString() {
+        return $this->name;
+    }
 
 }

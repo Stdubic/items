@@ -25,7 +25,7 @@ class Product
      *
      * @ORM\Column(name="desc", type="text", length=65535, nullable=true)
      */
-    private $desc;
+    private $description;
 
     /**
      * @var integer
@@ -44,8 +44,8 @@ class Product
     private $id;
     /**
      * Many Features have One Product.
-     * @ManyToOne(targetEntity="Vendor", inversedBy="products")
-     * @JoinColumn(name="vendor_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Vendor", inversedBy="products")
+     * @ORM\JoinColumn(name="vendor_id", referencedColumnName="id")
      */
     private $vendor;
 
@@ -82,9 +82,9 @@ class Product
      *
      * @return Product
      */
-    public function setDesc($desc)
+    public function setDesc($description)
     {
-        $this->desc = $desc;
+        $this->description = $description;
 
         return $this;
     }
@@ -157,4 +157,15 @@ class Product
     {
         return $this->vendor;
     }
+
+    /**
+     * @var string
+     */
+    private $desc;
+
+    public function __toString() {
+        return $this->name;
+    }
+
+
 }

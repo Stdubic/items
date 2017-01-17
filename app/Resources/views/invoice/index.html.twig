@@ -15,7 +15,7 @@
         <tbody>
         {% for invoice in invoices %}
             <tr>
-                <td><a href="{{ path('invoice_show', { 'id': invoice.id }) }}">{{ invoice.date }}</a></td>
+                <td><a href="{{ path('invoice_show', { 'id': invoice.id }) }}">{{ invoice.date|date('Y-m-d H:i:s') }}</a></td>
                 <td>{{ invoice.totalamount }}</td>
                 <td>{{ invoice.id }}</td>
                 <td>
