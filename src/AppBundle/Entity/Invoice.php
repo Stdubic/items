@@ -162,8 +162,10 @@ class Invoice
     {
         return $this->customer;
     }
+
     public function __toString() {
         return $this->totalamount;
     }
+
 
 }
